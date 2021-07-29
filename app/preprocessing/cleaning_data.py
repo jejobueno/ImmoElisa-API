@@ -144,7 +144,7 @@ class DataProcessor:
         return df
 
     def checkErrors(self, data: dict):
-        columns = ['postalCode', 'subtypeProperty', 'price', 'bedroomsCount', 'area', 'hasFullyEquippedKitchen',
+        columns = ['postalCode', 'subtypeProperty', 'bedroomsCount', 'area', 'hasFullyEquippedKitchen',
                    'hasFireplace', 'hasTerrace', 'terraceSurface', 'hasGarden', 'gardenSurface', 'landSurface',
                    'facadeCount', 'hasSwimmingPool', 'buildingCondition']
 
@@ -152,7 +152,7 @@ class DataProcessor:
 
         # First check if there is any value missing
         for column in columns:
-            if data == None:
+            if data is None:
                 raise InvalidExpression("No json object sent", status_code=200)
             elif column in data:
                 # Checking error on postalCode field
@@ -197,6 +197,6 @@ class DataProcessor:
                     raise InvalidExpression(f"The value given '{data[column]}' must be an string", status_code=200)
             else:
                 missing += column + ' '
-        if missing.__len__() > 1:
-            return InvalidExpression(f"3 fields expected (salary, bonus, taxes). You forgot: {missing}.", status_code=200)
+        if missing.__len__() > 0:
+            raise InvalidExpression(f"Fields missing: {missing}", status_code=200)
 
