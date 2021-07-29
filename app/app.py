@@ -4,7 +4,6 @@ from flask import Flask, request, jsonify
 
 from exceptions.InvalidExpression import InvalidExpression
 from predict.prediction import Predictor
-from preprocessing.cleaning_data import checkErrors
 
 app = Flask(__name__)
 
@@ -13,7 +12,6 @@ app = Flask(__name__)
 def predictPrice():
     data = request.get_json()
 
-    checkErrors(data)
     # First check if there is any value missing
     return jsonify(predictor.predict(data))
 
@@ -27,7 +25,7 @@ def handle_invalid_usage(error):
 
 @app.route("/", methods=['GET'])
 def isAlive():
-    return 'Hello'
+    return 'Alive'
 
 
 @app.errorhandler(404)
