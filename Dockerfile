@@ -5,9 +5,15 @@ RUN apt-get update \
     && apt-get install -y pip
 RUN pip install --upgrade pip
 
+COPY . .
+
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-CMD ["python", "code/hello_world.py"]
+EXPOSE ${MY_SERVICE_PORT}:5000
+
+ENTRYPOINT ["python3"]
+
+CMD ["app.py"]

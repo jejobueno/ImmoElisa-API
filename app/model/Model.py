@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
-from preprocessing.cleaning_data import preprocess
+from preprocessing.cleaning_data import DataProcessor
 
 
 class Model:
@@ -31,7 +31,8 @@ class Model:
         # our model to do better predictions
 
         df = pd.read_csv("data/housing-data.csv", index_col=0)
-        df = preprocess(df)
+        dataProcessor = DataProcessor()
+        df = dataProcessor.preprocess(df, isTrainingSet=True)
 
         self.columns = df.columns.to_list()
 
@@ -62,15 +63,13 @@ class Model:
         :param df_to_predict: new dataframe to fit into the X format
         :return: None
         """
-
-        df_preprocessed = preprocess(df_to_predict)
         # We create a new data frame with the columns of the dataframe used to
         # train the model
 
-        df_to_predict = pd.DataFrame(columns=self.columns)
+        df_format = pd.DataFrame(columns=self.columns)
 
         # We append our new data to this dataframe
-        df_to_predict = df_to_predict.append(df_preprocessed)
+        df_to_predict = df_format.append(df_to_predict)
 
         # Fill all the nan values with zeros
         df_to_predict.fillna(0, inplace=True)
