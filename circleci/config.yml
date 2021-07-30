@@ -39,11 +39,3 @@ jobs:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           command: pytest
-      - setup_remote_docker:
-          docker_layer_caching: true
-            - run:
-                name: Build and push Docker image
-                command: |
-                  docker build -t jejobueno/$IMAGE_NAME:$TAG .
-                  echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
-                  docker push jejobueno/$IMAGE_NAME:$TAG
