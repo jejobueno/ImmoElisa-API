@@ -19,7 +19,7 @@ jobs:
   build-docker-image:
     docker:
       - image: cimg/python:3.8
-.
+
     steps:
       - checkout
       - setup_remote_docker:
