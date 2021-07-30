@@ -26,4 +26,4 @@ class Predictor:
 
         X = df_to_predict.drop(["price"], axis=1).to_numpy()
 
-        return {"result": f"{np.exp(self.model.regressor.predict(X))}"}
+        return {"prediction": f"{np.exp(self.model.regressor.predict(X))}"}
