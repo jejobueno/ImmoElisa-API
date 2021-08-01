@@ -7,7 +7,7 @@
 
 group assignment: Regressions</h3>
 
-![BeCode_Logo](https://user-images.githubusercontent.com/34608190/127764172-4c767956-7da1-43d6-bc8e-fa12e0d2d8a9.png =250x)
+![BeCode_Logo](https://user-images.githubusercontent.com/34608190/127764172-4c767956-7da1-43d6-bc8e-fa12e0d2d8a9.png){ width=50% }
 
 # REAL STATE PREDICTION API 
 API for prediction of house prices on Belgium's real estate sales.
