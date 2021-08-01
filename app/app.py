@@ -13,7 +13,7 @@ def predictPrice():
     data = request.get_json()
 
     # First check if there is any value missing
-    return jsonify(predictor.predict(data["data"]))
+    return jsonify(predictor.predict(data['data']))
 
 
 @app.errorhandler(InvalidExpression)
