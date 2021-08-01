@@ -4,12 +4,8 @@
 
 <h1>Real State Prediction API</h1>
 
-
-<img width = "200" src = /assets/BeCode_Logo.png>
-</div>
-
-# ImmoEliza-Regressions
-Machine learning model to predict prices on Belgium's real estate sales.
+# ImmoEliza Predictions API
+API Machine learning model to predict prices on Belgium's real estate sales.
 
 ## Table of contents
 [Description](#Description)  
@@ -21,23 +17,41 @@ Machine learning model to predict prices on Belgium's real estate sales.
 [Authors](#Authors)
 
 ## Description
-The model predicts the prices of properties in Belgium, based on data that were gathered in a previous scraping project.
-In relation with the postal code, the state of the construction, the property subtype (apartment, studio, villa, chalet, ...),
-and existance of a fireplace, terrace, garden and/or fully equiped kitchen, an estimate of the asking price is made.
+The API return the prediction the price of a propertie in Belgium, based on data scrapped from Immoweb. 
+For the predictions our Machine Learning model looks at the relationship between the postal code, the state of the construction, the property subtype (apartment, studio, villa, chalet, ...), and existance of a fireplace, terrace, garden and/or fully equiped kitchen, an estimate of the asking price is made.
 
-The accuracy of the model is 0.89, which means that there is always a possibility for outliers (less then 11 %). More importantly: in 89 %
-of the cases the prediction will be within a respectable range.
-
-## Installation
-Clone the repository:
-```
-git clone https://github.com/jejobueno/ImmoEliza-Regressions
-``` 
+The accuracy of the model is pf  85%, which means that there is always a possibility for outliers (less then 15 %).
+  
+This API has been deployed with heroku under the url: https://api-ie-predictions.herokuapp.com/
 
 ## Usage
-Run main.py.
-
-## Output
+  
+For the predictions, send a `POST` request to https://api-ie-predictions.herokuapp.com/predict with the following parameters:
+  
+  ```json
+{
+  "data": {
+    "area": float,
+    "subpropertyType": Optional['HOUSE', 'VILLA', 'EXCEPTIONAL_PROPERTY', 'APARTMENT_BLOCK',
+        'MANSION', 'MIXED_USE_BUILDING', 'BUNGALOW', 'TOWN_HOUSE',
+        'FARMHOUSE', 'COUNTRY_COTTAGE', 'MANOR_HOUSE', 'APARTMENT',
+        'PENTHOUSE', 'DUPLEX', 'TRIPLEX', 'LOFT', 'FLAT_STUDIO',
+        'SERVICE_FLAT', 'GROUND_FLOOR'],
+    "bedroomsCount": int,
+    "postalCode": int,
+    "ladnSurface": float,
+    "hasGarden": binary bool,
+    "gardenSurface": binary bool,
+    "hasFullyEquippedKitchen": binary bool,
+    "hasSwimmingPool": binary bool,
+    "hasFireplace": binary bool,
+    "hasTerrace": bianry bool,
+    "terraceSurface": float,
+    "facadeCount": int,
+    "buildingCondition": Optional["TO_BE_DONE_UP" , "AS_NEW" , "GOOD" , "JUST_RENOVATED" , "TO_RESTORE"]
+  }
+}
+```
 When you run the program, you will get: 
 
 - a print of the train and test scores (without and with boost),
@@ -69,21 +83,6 @@ effective.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As an important addendum, we created a function that will prepare any new dataset to be pushed through the 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;program and make predictions about the price.
 
-## Examples
 
-**Correlation map:**
-
-<img width = "400" src = /assets/Correlation%20map.png> 
-
-
-**Rescaled area (square root) and price (logarhythmic):**
-
-<img width = "400" src = /assets/Rescaled%20sqrtArea%20vs%20logPrice.png> 
-
-
-**Predictions vs. expected values**
-
-<img width = "400" src = /assets/predictions%20VS%20y.png>
-
-## Authors
+## Author
 Jesús Bueno - Project Manager/dev & doc  
