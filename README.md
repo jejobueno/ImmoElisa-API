@@ -1,16 +1,15 @@
-
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-360/)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/jejobueno/ImmoEliza-Regressions/main.svg)](https://results.pre-commit.ci/latest/github/jejobueno/ImmoEliza-Regressions/main) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 <div align = "center">
 
-<h3>Becode AI training
+<h1>Real State Prediction API</h1>
 
-group assignment: Regressions</h3>
 
-![BeCode_Logo width="250"](https://user-images.githubusercontent.com/34608190/127764172-4c767956-7da1-43d6-bc8e-fa12e0d2d8a9.png)
+<img width = "200" src = /assets/BeCode_Logo.png>
+</div>
 
-# REAL STATE PREDICTION API 
-API for prediction of house prices on Belgium's real estate sales.
+# ImmoEliza-Regressions
+Machine learning model to predict prices on Belgium's real estate sales.
 
 ## Table of contents
 [Description](#Description)  
@@ -88,5 +87,3 @@ effective.
 
 ## Authors
 Jesús Bueno - Project Manager/dev & doc  
-Pauwel De Wilde - dev & doc  
-Camille de Neef & Hugo Pradier
