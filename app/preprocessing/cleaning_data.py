@@ -47,6 +47,7 @@ class DataProcessor:
             # Dropping rows with price as NaN values
             df = df[df["price"].notna()]
             df = df[df["area"].notna()]
+            df = df[df["buildingCondition   "].notna()]
 
             # Dropping duplicated values
             df = df.drop_duplicates(
