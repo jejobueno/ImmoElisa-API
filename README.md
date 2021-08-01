@@ -31,25 +31,25 @@ For the predictions, send a `POST` request to https://api-ie-predictions.herokua
   ```json
 {
   "data": {
-    "area": float,
-    "subpropertyType": Optional['HOUSE', 'VILLA', 'EXCEPTIONAL_PROPERTY', 'APARTMENT_BLOCK',
-        'MANSION', 'MIXED_USE_BUILDING', 'BUNGALOW', 'TOWN_HOUSE',
-        'FARMHOUSE', 'COUNTRY_COTTAGE', 'MANOR_HOUSE', 'APARTMENT',
-        'PENTHOUSE', 'DUPLEX', 'TRIPLEX', 'LOFT', 'FLAT_STUDIO',
-        'SERVICE_FLAT', 'GROUND_FLOOR'],
-    "bedroomsCount": int,
-    "postalCode": int,
-    "ladnSurface": float,
-    "hasGarden": binary bool,
-    "gardenSurface": binary bool,
-    "hasFullyEquippedKitchen": binary bool,
-    "hasSwimmingPool": binary bool,
-    "hasFireplace": binary bool,
-    "hasTerrace": bianry bool,
-    "terraceSurface": float,
-    "facadeCount": int,
-    "buildingCondition": Optional["TO_BE_DONE_UP" , "AS_NEW" , "GOOD" , "JUST_RENOVATED" , "TO_RESTORE"]
-  }
+      "area": float,
+      "subpropertyType": Optional['HOUSE', 'VILLA', 'EXCEPTIONAL_PROPERTY', 'APARTMENT_BLOCK',
+          'MANSION', 'MIXED_USE_BUILDING', 'BUNGALOW', 'TOWN_HOUSE',
+          'FARMHOUSE', 'COUNTRY_COTTAGE', 'MANOR_HOUSE', 'APARTMENT',
+          'PENTHOUSE', 'DUPLEX', 'TRIPLEX', 'LOFT', 'FLAT_STUDIO',
+          'SERVICE_FLAT', 'GROUND_FLOOR'],
+      "bedroomsCount": int,
+      "postalCode": int,
+      "ladnSurface": float,
+      "hasGarden": binary bool,
+      "gardenSurface": binary bool,
+      "hasFullyEquippedKitchen": binary bool,
+      "hasSwimmingPool": binary bool,
+      "hasFireplace": binary bool,
+      "hasTerrace": bianry bool,
+      "terraceSurface": float,
+      "facadeCount": int,
+      "buildingCondition": Optional["TO_BE_DONE_UP" , "AS_NEW" , "GOOD" , "JUST_RENOVATED" , "TO_RESTORE"]
+      }
 }
 ```
 When you run the program, you will get: 
