@@ -41,7 +41,7 @@ For the predictions, send a `POST` request to https://api-ie-predictions.herokua
       "postalCode": int,
       "ladnSurface": float,
       "hasGarden": binary bool,
-      "gardenSurface": binary bool,
+      "gardenSurface": float,
       "hasFullyEquippedKitchen": binary bool,
       "hasSwimmingPool": binary bool,
       "hasFireplace": binary bool,
