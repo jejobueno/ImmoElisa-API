@@ -52,15 +52,13 @@ For the predictions, send a `POST` request to https://api-ie-predictions.herokua
       }
 }
 ```
-When you run the program, you will get: 
 
-- a print of the train and test scores (without and with boost),
-- a print of the regressor score,
-- a list of data that are to be predicted (based on the test dataframe),
-- a list of the predictions themselves,
-- some useful plots (the normalized data, the predictions vs the y_test database to show the accuracy, 
-the boosted predictions, and the normalized data of the test dataframe, ...)
-
+Then the result from the API will be:
+  ```json
+{
+      "predictions" : float
+}
+```
 ## How it works
 1. DataCleaner
 First, the data are cleaned. That means that we drop all the entirely empty rows, string values
