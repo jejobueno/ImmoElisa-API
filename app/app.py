@@ -13,7 +13,10 @@ def predictPrice():
     data = request.get_json()
 
     # First check if there is any value missing
-    return jsonify(predictor.predict(data['data']))
+    response = jsonify(predictor.predict(data['data']))
+    # Enable Access-Control-Allow-Origin
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 
 @app.errorhandler(InvalidExpression)

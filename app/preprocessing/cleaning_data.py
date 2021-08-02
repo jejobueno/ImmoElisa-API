@@ -154,50 +154,44 @@ class DataProcessor:
         # First check if there is any value missing
         for column in columns:
             if data is None:
-                raise InvalidExpression("No json object sent", status_code=200)
+                raise InvalidExpression("No json object sent")
             elif column in data:
                 # Checking error on postalCode field
                 if column == 'postalCode':
                     if re.match(r'^\d{4}$', str(data[column])):
                         if 0 > data[column] or data[column] > 9999:
-                            raise InvalidExpression("The zip code should be a number between 0 and 9999.",
-                                                    status_code=200)
+                            raise InvalidExpression("The zip code should be a number between 0 and 9999.")
                         else:
                             if data[column] not in self.unique_categorical_values[column]:
                                 raise InvalidExpression("Sorry this code is not into our model. We are working to add"
-                                                        "more data to it.",
-                                                        status_code=200)
+                                                        "more data to it.")
                     else:
-                        raise InvalidExpression("The zip code should be expressed as an integer", status_code=200)
+                        raise InvalidExpression("The zip code should be expressed as an integer")
                 ## Checking error on bedroomsCount field
                 elif column in ['bedroomsCount', 'facadeCount']:
                     if type(data[column]) != int:
-                        raise InvalidExpression(f"The {column} must be an integer",
-                                                status_code=200)
+                        raise InvalidExpression(f"The {column} must be an integer")
                 ## Checking erros on surfaces field
                 elif column in ['area', 'terraceSurface', 'gardenSurface', 'landSurface']:
                     if type(data[column]) != float:
-                        raise InvalidExpression(f"The {column} must be an float",
-                                                status_code=200)
+                        raise InvalidExpression(f"The {column} must be an float")
 
                 ## Checking erros on field
                 elif column.startswith('has'):
                     if not re.match(r'^[01]$', str(data[column])):
-                        raise InvalidExpression(f"The {column} must be 0 or 1",
-                                                status_code=200)
+                        raise InvalidExpression(f"The {column} must be 0 or 1")
 
                 # Checking errors on categorical values:
                 elif type(data[column]) == str:
                     if column in self.unique_categorical_values:
                         if data[column] not in self.unique_categorical_values[column]:
-                            raise InvalidExpression(f"The value {data[column]} for the field {column} is not valid",
-                                                    status_code=200)
+                            raise InvalidExpression(f"The value {data[column]} for the field {column} is not valid")
                     else:
-                        raise InvalidExpression(f"The value of the field {column} is not valid", status_code=200)
+                        raise InvalidExpression(f"The value of the field {column} is not valid")
                 else:
-                    raise InvalidExpression(f"The value given '{data[column]}' must be an string", status_code=200)
+                    raise InvalidExpression(f"The value given '{data[column]}' must be an string")
             else:
                 missing += column + ' '
         if missing.__len__() > 0:
-            raise InvalidExpression(f"Fields missing: {missing}", status_code=200)
+            raise InvalidExpression(f"Fields missing: {missing}")
 
