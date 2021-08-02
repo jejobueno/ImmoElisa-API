@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, request, jsonify
+from flask_cors import cross_origin
 
 from exceptions.InvalidExpression import InvalidExpression
 from predict.prediction import Predictor
@@ -9,6 +10,7 @@ app = Flask(__name__)
 
 
 @app.route("/predict", methods=['POST'])
+@cross_origin()
 def predictPrice():
     data = request.get_json()
 
@@ -28,7 +30,9 @@ def handle_invalid_usage(error):
 
 @app.route("/", methods=['GET'])
 def isAlive():
-    return 'Alive'
+    response = jsonify(message="Alive")
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 
 @app.errorhandler(404)
