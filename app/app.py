@@ -1,12 +1,13 @@
 import os
 
 from flask import Flask, request, jsonify
-from flask_cors import cross_origin
+from flask_cors import cross_origin, CORS
 
 from exceptions.InvalidExpression import InvalidExpression
 from predict.prediction import Predictor
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/predict", methods=['POST'])
