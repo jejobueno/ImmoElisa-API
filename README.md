@@ -59,6 +59,13 @@ Then the result from the API will be:
       "prediction" : float
 }
 ```
+If there is any error on the type of the data, formatting or fields missing. The result willl be:
+
+  ```json
+{
+      "prediction" : Optional[str]
+}
+```
 ## How it works
 1. DataCleaner
 First, the data are cleaned. That means that we drop all the entirely empty rows, string values
