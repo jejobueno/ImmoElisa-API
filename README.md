@@ -23,6 +23,18 @@ The accuracy of the model is pf  85%, which means that there is always a possibi
   
 This API has been deployed with heroku under the url: https://api-ie-predictions.herokuapp.com/
 
+## Installation
+
+Clone the repository:
+```
+git clone https://github.com/jejobueno/ImmoEliza-API
+```
+
+Install the requirements
+```
+pip install -r requirement.txt
+```
+
 ## Usage
   
 For the predictions, send a `POST` request to https://api-ie-predictions.herokuapp.com/predict with the following parameters:
