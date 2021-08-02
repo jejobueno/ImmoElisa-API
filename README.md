@@ -4,8 +4,7 @@
 
 <h1>Real State Prediction API</h1>
 </div>
-# ImmoEliza Predictions API
-API Machine learning model to predict prices on Belgium's real estate sales.
+ImmoElizas's API Machine learning model to predict prices on Belgium's real estate sales.
 
 ## Table of contents
 [Description](#Description)  
