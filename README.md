@@ -4,8 +4,7 @@
 
 <h1>Real State Prediction API</h1>
 </div>
-# ImmoEliza Predictions API
-API Machine learning model to predict prices on Belgium's real estate sales.
+ImmoElizas's API Machine learning model to predict prices on Belgium's real estate sales.
 
 ## Table of contents
 [Description](#Description)  
@@ -24,6 +23,18 @@ The accuracy of the model is pf  85%, which means that there is always a possibi
   
 This API has been deployed with heroku under the url: https://api-ie-predictions.herokuapp.com/
 
+## Installation
+
+Clone the repository:
+```
+git clone https://github.com/jejobueno/ImmoEliza-API
+```
+
+Install the requirements
+```
+pip install -r requirement.txt
+```
+
 ## Usage
   
 For the predictions, send a `POST` request to https://api-ie-predictions.herokuapp.com/predict with the following parameters:
@@ -41,7 +52,7 @@ For the predictions, send a `POST` request to https://api-ie-predictions.herokua
       "postalCode": int,
       "ladnSurface": float,
       "hasGarden": binary bool,
-      "gardenSurface": binary bool,
+      "gardenSurface": float,
       "hasFullyEquippedKitchen": binary bool,
       "hasSwimmingPool": binary bool,
       "hasFireplace": binary bool,
@@ -52,37 +63,44 @@ For the predictions, send a `POST` request to https://api-ie-predictions.herokua
       }
 }
 ```
-When you run the program, you will get: 
 
-- a print of the train and test scores (without and with boost),
-- a print of the regressor score,
-- a list of data that are to be predicted (based on the test dataframe),
-- a list of the predictions themselves,
-- some useful plots (the normalized data, the predictions vs the y_test database to show the accuracy, 
-the boosted predictions, and the normalized data of the test dataframe, ...)
+Then the result from the API will be:
+  ```json
+{
+      "prediction" : float
+}
+```
+If there is any error on the type of the data, formatting or fields missing. The result willl be:
 
+  ```json
+{
+      "prediction" : Optional[str]
+}
+```
 ## How it works
-1. DataCleaner
+1. Processor
 First, the data are cleaned. That means that we drop all the entirely empty rows, string values
 are cleaned up, outliers and properties without price and area indication are dropped, duplicates
 and columns with the lowest correlation rate are deleted, and some other minor riddances.  
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To put everything ready for the rest of the process, the variables that remain are transformed into
+To put everything ready for the rest of the process, the variables that remain are transformed into
 features.
 
-2. DataRegressor
+2. Model
 In the second step, the prediction is prepared. Firstly, the price, area, outside space and land
-surface are rescaled. This is done in order to limit the differences and make the model more
-effective.
+surface are rescaled. This is done in order to apreciate more linealy the relationship between price and area.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Secondly, the database is split and into a train and test dataframe. The former is used to train the model. A gradient 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boost is implemented.
+Secondly, the database is split and into a train and test dataframe. The first one is used to train the model.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the final step, predictions are made using the test dataset.  
+Then we score our model, getting a 85% of accuracy in hour predictions.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As an important addendum, we created a function that will prepare any new dataset to be pushed through the 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;program and make predictions about the price.
+3. Predictor 
+This object is going to be initializated when the app.py is runned. This predictor will load the model which is already trained to make the prediction.
 
+The data is checked to see if there is any error in the format or/and type, then preprocessed and it columns reformated in order to get a matrix with the required size and pased trough our model to get the prediction.
+
+4. app.py
+Here is where the `POST` and `GET` requests are processed. 
 
 ## Author
 Jesús Bueno - Project Manager/dev & doc  
