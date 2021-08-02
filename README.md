@@ -56,7 +56,7 @@ For the predictions, send a `POST` request to https://api-ie-predictions.herokua
 Then the result from the API will be:
   ```json
 {
-      "predictions" : float
+      "prediction" : float
 }
 ```
 ## How it works
