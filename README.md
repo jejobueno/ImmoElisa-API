@@ -74,7 +74,7 @@ If there is any error on the type of the data, formatting or fields missing. The
 
   ```json
 {
-      "prediction" : Optional[str]
+      "error" : Optional[str]
 }
 ```
 ## How it works
